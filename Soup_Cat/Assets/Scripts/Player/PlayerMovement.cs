@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
             if(jumpCounter == 0)
             {
                 jumpCounter++;
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jump));
             }
             
         }
