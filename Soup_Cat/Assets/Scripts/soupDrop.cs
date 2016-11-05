@@ -30,4 +30,17 @@ public class soupDrop : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = new Vector2(dir * soupSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "enemy")
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+        if (other.gameObject.tag == "ground")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
