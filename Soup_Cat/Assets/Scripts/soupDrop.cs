@@ -9,10 +9,15 @@ public class soupDrop : MonoBehaviour {
 
     private int counter = 20;
 
+    enum soupType { normal, lava, alphegetti, noddle};
+
+    soupType type;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         dir = -player.transform.localScale.x;
+        type = (soupType)player.GetComponent<PlayerScript>().soupType; 
     }
 	// Update is called once per frame
 	void Update ()
