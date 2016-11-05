@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour {
     {
             Rigidbody rocketClone = (Rigidbody)Instantiate(soup, transform.position, transform.rotation);
             rocketClone.velocity = transform.forward * soupSpeed;
-
     }
 
     void FlipSprite(float dir)

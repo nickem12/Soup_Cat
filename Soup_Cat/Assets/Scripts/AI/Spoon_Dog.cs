@@ -6,6 +6,7 @@ public class Spoon_Dog : MonoBehaviour {
     private double timer;
     public char direction;
     public int PATROL_DISTANCE;
+    private float jump;
 
     float velocity;
     public float speed;
@@ -20,8 +21,17 @@ public class Spoon_Dog : MonoBehaviour {
     {
         Mood = MOOD_STATE.PATROL;
         timer = 0;
-        PATROL_DISTANCE = 50;
+        jump = 250;
 	}
+
+   void OnTriggerEnter2D(Collider2D colider)
+    {
+        if(colider.gameObject.tag == "ground")
+        {
+            Vector2 newVelocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
+            GetComponent<Rigidbody2D>().AddForce(newVelocity);
+        }
+    }
 
     //points sprite in right direction
     void FlipSprite(float dir)
