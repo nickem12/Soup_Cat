@@ -7,6 +7,9 @@ public class Spoon_Dog : MonoBehaviour {
     public char direction;
     public int PATROL_DISTANCE;
     private float jump;
+    public GameObject player;
+    Vector3 PlayerPos = new Vector3(0, 0, 0);
+    Vector3 EnemyPos = new Vector3(0, 0, 0);
 
     float velocity;
     public float speed;
@@ -19,6 +22,7 @@ public class Spoon_Dog : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        player = GameObject.FindWithTag("Player");
         Mood = MOOD_STATE.PATROL;
         timer = 0;
         jump = 250;
@@ -26,8 +30,10 @@ public class Spoon_Dog : MonoBehaviour {
 
    void OnTriggerEnter2D(Collider2D colider)
     {
+        Debug.Log("collision detected");
         if(colider.gameObject.tag == "ground")
         {
+            Debug.Log("jumping");
             Vector2 newVelocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
             GetComponent<Rigidbody2D>().AddForce(newVelocity);
         }
@@ -80,23 +86,39 @@ public class Spoon_Dog : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        PlayerPos = player.transform.position;
+        EnemyPos = this.GetComponent<Transform>().position;
+
         switch (Mood)
         {
             case MOOD_STATE.PATROL:
                 {
                     timer += 0.5;
+
                     if (timer > PATROL_DISTANCE)
                     {
                         ChangeDirection();
                     }
+
                     move();
+
+                    if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
+                    {
+                        Mood = MOOD_STATE.FOLLOWING;
+                    }
                     break;
                 }
-
             case MOOD_STATE.FOLLOWING:
                 {
-
-
+                    if (PlayerPos.x > EnemyPos.x)
+                    {
+                        direction = 'R';
+                    }
+                    else if(PlayerPos.x < EnemyPos.x)
+                    {
+                        direction = 'L';
+                    }
+                    move();
                     break;
                 }
         }
