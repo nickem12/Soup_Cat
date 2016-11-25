@@ -61,8 +61,17 @@ public class PlayerMovement : MonoBehaviour {
             facingRight = !facingRight;
         }
     }
-    void OnTriggerEnter2D()
+    //void OnTriggerEnter2D()
+    //{
+    //    jumpCounter = 0;
+    //}
+    void OnTriggerEnter2D(Collider2D Col)
     {
-        jumpCounter = 0;
+        if (Col.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+        //Detect collision between object A and object B
+
     }
 }
