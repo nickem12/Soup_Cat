@@ -37,7 +37,7 @@ public class Spoon_Dog : MonoBehaviour {
             jumpCounter = 0;
         }
 
-        if(colider.gameObject.tag == "ground" || colider.gameObject.tag == "JumpThing")
+        if(colider.gameObject.tag == "JumpThing")
         {
             if (jumpCounter == 0)
             {
@@ -123,11 +123,15 @@ public class Spoon_Dog : MonoBehaviour {
                     {
                         direction = 'R';
                     }
-                    else if(PlayerPos.x < EnemyPos.x)
+                    else if (PlayerPos.x < EnemyPos.x)
                     {
                         direction = 'L';
                     }
                     move();
+                    if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
+                    {
+                        Mood = MOOD_STATE.FOLLOWING;
+                    }
                     break;
                 }
         }
