@@ -7,6 +7,7 @@ public class Spoon_Dog : MonoBehaviour {
     public char direction;
     public int PATROL_DISTANCE;
     private float jump;
+    private short jumpCounter;
     public GameObject player;
     Vector3 PlayerPos = new Vector3(0, 0, 0);
     Vector3 EnemyPos = new Vector3(0, 0, 0);
@@ -26,16 +27,24 @@ public class Spoon_Dog : MonoBehaviour {
         Mood = MOOD_STATE.PATROL;
         timer = 0;
         jump = 250;
+        jumpCounter = 0;
 	}
 
    void OnTriggerEnter2D(Collider2D colider)
     {
-        Debug.Log("collision detected");
-        if(colider.gameObject.tag == "ground")
+        if(colider.gameObject.tag == "ground" && jumpCounter > 0)
         {
-            Debug.Log("jumping");
-            Vector2 newVelocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
-            GetComponent<Rigidbody2D>().AddForce(newVelocity);
+            jumpCounter = 0;
+        }
+
+        if(colider.gameObject.tag == "ground" || colider.gameObject.tag == "JumpThing")
+        {
+            if (jumpCounter == 0)
+            {
+                Vector2 newVelocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jump);
+                GetComponent<Rigidbody2D>().AddForce(newVelocity);
+                jumpCounter = 1;
+            }
         }
     }
 
