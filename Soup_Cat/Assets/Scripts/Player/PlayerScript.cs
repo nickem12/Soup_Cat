@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P))
         {
             //hell.Valyou -= 10;
-            helth.CurentHelth-= 10;
+            hit();
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
