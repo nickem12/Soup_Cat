@@ -8,7 +8,7 @@ public class stat
     [SerializeField]
     private Health hell;
     [SerializeField]
-    private float maxValyou=0;
+    private float maxValyou=100;
     [SerializeField]
     private float curentHelth=100;
 
@@ -22,10 +22,8 @@ public class stat
         set
         {
 
-            curentHelth = value;
+            curentHelth = Mathf.Clamp(value,0, maxValyou);
             hell.Valyou = curentHelth;
-            Debug.Log("curent hp");
-            Debug.Log(curentHelth);
         }
     }
 

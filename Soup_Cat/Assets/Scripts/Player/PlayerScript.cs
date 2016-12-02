@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour {
     public int crackers;
     public int lives;
     public int soupType = 0;
-
+    private float invonable = 0;
 
     private bool lava = false;
     private bool alphegetti = false;
@@ -49,12 +49,17 @@ public class PlayerScript : MonoBehaviour {
             soupType = 3;
         }
 
+        if (invonable >= 0)
+        {
+            invonable -= Time.deltaTime;
+        }
+      
 
         //charlie worcking
         if (Input.GetKeyDown(KeyCode.P))
         {
             //hell.Valyou -= 10;
-            helth.CurentHelth-= 10;
+            hit();
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
@@ -63,4 +68,27 @@ public class PlayerScript : MonoBehaviour {
         }
 
     }
+
+    //cats
+    public void hit()
+    {
+        if (invonable < 0)
+        {
+            invonable = 0;
+        }
+
+        if (invonable<=0)
+        {
+            helth.CurentHelth -= 10;
+            invonable = 1;
+        }
+
+    }
+
+
+
+
+
+
+
 }
