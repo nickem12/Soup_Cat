@@ -10,22 +10,32 @@ public class Health : MonoBehaviour {
     [SerializeField]
     private Image helth;
 
+    public float ChangeHelth;
+
     public float MaxValyou { get; set; }
 
-    public float valyou
+    private float valyou;
+
+    public float Valyou
     {
+        get
+        {
+            return valyou;
+        }
+
         set
         {
             Healthremaining = HelthMath(valyou, 0, MaxValyou, 0, 1);
         }
-
     }
+
+  
 
 
     // Use this for initialization
     void Start ()
     {
-	
+       // Valyou = 2;
 	}
 	
 
@@ -39,14 +49,18 @@ public class Health : MonoBehaviour {
     private void HelthBarStuff()
     {
 
-        helth.fillAmount = Healthremaining;
+        if (Healthremaining!= helth.fillAmount)
+        {
+            helth.fillAmount = Healthremaining;
+        }
+        
 
     } 
 
-    private float HelthMath(float valyou, float inMin, float inMax, float outMax, float outMin)
+    private float HelthMath(float Valyou, float inMin, float inMax, float outMax, float outMin)
     {
 
-        return ((valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
+        return ((Valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
 
     }
 }

@@ -5,21 +5,25 @@ public class PlayerScript : MonoBehaviour {
 
     public int crackers;
     public int lives;
+    public int soupType = 0;
+
 
     private bool lava = false;
     private bool alphegetti = false;
     private bool noddle = false;
 
-    public int soupType = 0;
+    private stat helth;
 
 	// Use this for initialization
 	void Start () {
         crackers = 0;
         lives = 9;
+        //helth.
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+  
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKey(KeyCode.Alpha1))
         {
             soupType = 0;
