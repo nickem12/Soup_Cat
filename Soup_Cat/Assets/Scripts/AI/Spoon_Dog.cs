@@ -7,9 +7,10 @@ public class Spoon_Dog : MonoBehaviour {
     public char direction;
     public int PATROL_DISTANCE;
     private float jump;
-    private short jumpCounter;
+    public short jumpCounter;
     public GameObject player;
     float distance = 0;
+    short Health = 0;
 
     float velocity;
     public float speed;
@@ -27,12 +28,14 @@ public class Spoon_Dog : MonoBehaviour {
         timer = 0;
         jump = 300;
         jumpCounter = 0;
+        Health = 50;
 	}
 
    void OnTriggerEnter2D(Collider2D colider)
     {
-        if(colider.gameObject.tag == "ground" && jumpCounter > 0)
+        if(colider.gameObject.tag == "ground" && jumpCounter != 0)
         {
+            Debug.Log("jump reset");
             jumpCounter = 0;
         }
 
@@ -109,7 +112,7 @@ public class Spoon_Dog : MonoBehaviour {
 
                     move();
 
-                    if (distance > 10)
+                    if (distance < 7)
                     {
                         Mood = MOOD_STATE.FOLLOWING;
                     }
@@ -126,10 +129,10 @@ public class Spoon_Dog : MonoBehaviour {
                         direction = 'L';
                     }
                     move();
-                    //if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
-                   // {
-                    //    Mood = MOOD_STATE.FOLLOWING;
-                   // }
+                    if (distance > 10)
+                    {
+                        Mood = MOOD_STATE.PATROL;
+                    }
                     break;
                 }
         }
