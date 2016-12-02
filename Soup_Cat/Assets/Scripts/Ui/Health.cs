@@ -9,8 +9,8 @@ public class Health : MonoBehaviour {
 
     [SerializeField]
     private Image helth;
-
     public float ChangeHelth;
+    private float lurpspees=2;
 
     public float MaxValyou { get; set; }
     [SerializeField]
@@ -26,7 +26,6 @@ public class Health : MonoBehaviour {
         set
         {
             valyou = value;
-            Debug.Log(valyou);
             Healthremaining = HelthMath(valyou, 0, MaxValyou, 0, 1);
         }
     }
@@ -53,7 +52,7 @@ public class Health : MonoBehaviour {
 
         if (Healthremaining!= helth.fillAmount)
         {
-            helth.fillAmount = Healthremaining;
+            helth.fillAmount = Mathf.Lerp(helth.fillAmount ,Healthremaining,Time.deltaTime*lurpspees);
         }
         
 
