@@ -111,7 +111,7 @@ public class Spoon_Dog : MonoBehaviour {
 
                     move();
 
-                    if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
+                    if ((PlayerPos.x - EnemyPos.x) > 100 || (PlayerPos.x - EnemyPos.x) < 100)
                     {
                         Mood = MOOD_STATE.FOLLOWING;
                     }
