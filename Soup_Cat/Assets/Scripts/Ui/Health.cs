@@ -12,20 +12,20 @@ public class Health : MonoBehaviour {
 
     public float MaxValyou { get; set; }
 
-    public float valyou
-    {
-        set
-        {
-            Healthremaining = HelthMath(valyou, 0, MaxValyou, 0, 1);
-        }
+    //public float Valyou
+    //{
+    //    set
+    //    {
+    //        Healthremaining = HelthMath(Valyou, 0, MaxValyou, 0, 1);
+    //    }
 
-    }
+    //}
 
 
     // Use this for initialization
     void Start ()
     {
-	
+       // Valyou = 2;
 	}
 	
 
@@ -43,10 +43,10 @@ public class Health : MonoBehaviour {
 
     } 
 
-    private float HelthMath(float valyou, float inMin, float inMax, float outMax, float outMin)
+    private float HelthMath(float Valyou, float inMin, float inMax, float outMax, float outMin)
     {
 
-        return ((valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
+        return ((Valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
 
     }
 }
