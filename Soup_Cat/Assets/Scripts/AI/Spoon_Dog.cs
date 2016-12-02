@@ -9,8 +9,7 @@ public class Spoon_Dog : MonoBehaviour {
     private float jump;
     private short jumpCounter;
     public GameObject player;
-    Vector3 PlayerPos = new Vector3(0, 0, 0);
-    Vector3 EnemyPos = new Vector3(0, 0, 0);
+    float distance = 0;
 
     float velocity;
     public float speed;
@@ -26,7 +25,7 @@ public class Spoon_Dog : MonoBehaviour {
         player = GameObject.FindWithTag("Player");
         Mood = MOOD_STATE.PATROL;
         timer = 0;
-        jump = 250;
+        jump = 300;
         jumpCounter = 0;
 	}
 
@@ -95,8 +94,7 @@ public class Spoon_Dog : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        PlayerPos = player.transform.position;
-        EnemyPos = this.GetComponent<Transform>().position;
+        distance = Vector3.Distance(player.transform.position, this.GetComponent<Transform>().position);
 
         switch (Mood)
         {
@@ -111,7 +109,7 @@ public class Spoon_Dog : MonoBehaviour {
 
                     move();
 
-                    if ((PlayerPos.x - EnemyPos.x) > 100 || (PlayerPos.x - EnemyPos.x) < 100)
+                    if (distance > 10)
                     {
                         Mood = MOOD_STATE.FOLLOWING;
                     }
@@ -119,19 +117,19 @@ public class Spoon_Dog : MonoBehaviour {
                 }
             case MOOD_STATE.FOLLOWING:
                 {
-                    if (PlayerPos.x > EnemyPos.x)
+                    if (player.transform.position.x > this.GetComponent<Transform>().position.x)
                     {
                         direction = 'R';
                     }
-                    else if (PlayerPos.x < EnemyPos.x)
+                    else if (player.transform.position.x < this.GetComponent<Transform>().position.x)
                     {
                         direction = 'L';
                     }
                     move();
-                    if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
-                    {
-                        Mood = MOOD_STATE.FOLLOWING;
-                    }
+                    //if ((PlayerPos.x - EnemyPos.x) > 200 || (PlayerPos.x - EnemyPos.x) < 200)
+                   // {
+                    //    Mood = MOOD_STATE.FOLLOWING;
+                   // }
                     break;
                 }
         }
