@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\Enemy_Collision.cs" />
-    <Compile Include="Assets\Scripts\AI\NarwhalBehavior.cs" />
     <Compile Include="Assets\Scripts\AI\Spoon_Dog.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />

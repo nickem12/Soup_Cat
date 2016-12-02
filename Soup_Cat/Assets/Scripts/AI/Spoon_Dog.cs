@@ -13,7 +13,7 @@ public class Spoon_Dog : MonoBehaviour {
     short Health = 0;
 
     float velocity;
-    float speed;
+    public float speed;
 
     public enum MOOD_STATE { PATROL, FOLLOWING };
     public MOOD_STATE Mood;
@@ -29,7 +29,6 @@ public class Spoon_Dog : MonoBehaviour {
         jump = 300;
         jumpCounter = 0;
         Health = 50;
-        speed = 2;
 	}
 
    void OnTriggerEnter2D(Collider2D colider)
