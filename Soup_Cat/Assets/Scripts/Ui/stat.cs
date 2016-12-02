@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
+[Serializable]
 public class stat
 {
+    [SerializeField]
     private Health hell;
-    private float MaxValyou;
-    private float curentHelth;
+    [SerializeField]
+    private float maxValyou=0;
+    [SerializeField]
+    private float curentHelth=100;
 
     public float CurentHelth
     {
@@ -19,6 +24,8 @@ public class stat
 
             curentHelth = value;
             hell.Valyou = curentHelth;
+            Debug.Log("curent hp");
+            Debug.Log(curentHelth);
         }
     }
 
@@ -26,13 +33,21 @@ public class stat
     {
         get
         {
-            return MaxValyou;
+            return maxValyou;
         }
 
         set
         {
-            MaxValyou = value;
-            hell.MaxValyou = MaxValyou;
+            //hell.MaxValyou = maxValyou;
+            this.maxValyou = value;
+            hell.MaxValyou = maxValyou;
         }
+    }
+
+   public void init()
+    {
+        this.MaxValyou1 = 100;
+      //  this.CurentHelth = curentHelth;
+
     }
 }

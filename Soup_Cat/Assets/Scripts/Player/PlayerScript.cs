@@ -12,7 +12,15 @@ public class PlayerScript : MonoBehaviour {
     private bool alphegetti = false;
     private bool noddle = false;
 
+    [SerializeField]
     private stat helth;
+
+   // private Health hell;
+
+    private void Awake()
+    {
+        helth.init();
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -40,5 +48,19 @@ public class PlayerScript : MonoBehaviour {
         {
             soupType = 3;
         }
+
+
+        //charlie worcking
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //hell.Valyou -= 10;
+            helth.CurentHelth-= 10;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+           // hell.Valyou += 10;
+            helth.CurentHelth += 10;
+        }
+
     }
 }

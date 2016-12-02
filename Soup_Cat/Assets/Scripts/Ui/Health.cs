@@ -13,8 +13,8 @@ public class Health : MonoBehaviour {
     public float ChangeHelth;
 
     public float MaxValyou { get; set; }
-
-    private float valyou;
+    [SerializeField]
+    private float valyou=100;
 
     public float Valyou
     {
@@ -25,6 +25,8 @@ public class Health : MonoBehaviour {
 
         set
         {
+            valyou = value;
+            Debug.Log(valyou);
             Healthremaining = HelthMath(valyou, 0, MaxValyou, 0, 1);
         }
     }
@@ -59,8 +61,8 @@ public class Health : MonoBehaviour {
 
     private float HelthMath(float Valyou, float inMin, float inMax, float outMax, float outMin)
     {
-
-        return ((Valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
+        return  (Valyou / inMax);
+        // return ((Valyou - inMin) * (outMax - outMin) / (inMax - inMin) + outMin);
 
     }
 }
