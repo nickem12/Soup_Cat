@@ -61,9 +61,12 @@ public class PlayerMovement : MonoBehaviour {
             facingRight = !facingRight;
         }
     }
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D colider)
     {
-        jumpCounter = 0;
+        if (colider.gameObject.tag == "ground")
+        {
+            jumpCounter = 0;
+        }
     }
     //void OnTriggerEnter2D(Collider2D Col)
     //{

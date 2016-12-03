@@ -69,6 +69,14 @@ public class PlayerScript : MonoBehaviour {
 
     }
 
+    void OnTriggerEnter2D(Collider2D colider)
+    {
+        if(colider.gameObject.tag == "enemy")
+        {
+            hit();
+        }
+    }
+
     //cats
     public void hit()
     {
