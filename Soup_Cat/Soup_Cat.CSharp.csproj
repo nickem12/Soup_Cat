@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\Enemy_Collision.cs" />
     <Compile Include="Assets\Scripts\AI\Nawhal.cs" />
+    <Compile Include="Assets\Scripts\AI\Owl.cs" />
     <Compile Include="Assets\Scripts\AI\Spoon_Dog.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
