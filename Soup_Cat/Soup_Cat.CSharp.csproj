@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Ui\Health.cs" />
+    <Compile Include="Assets\Scripts\Ui\crackercounter.cs" />
     <Compile Include="Assets\Scripts\Ui\stat.cs" />
     <Compile Include="Assets\Scripts\soupDrop.cs" />
   </ItemGroup>

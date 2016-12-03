@@ -9,6 +9,8 @@ public class Health : MonoBehaviour {
 
     [SerializeField]
     private Image helth;
+
+
     public float ChangeHelth;
     private float lurpspees=2;
 
