@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class PlayerScript : MonoBehaviour {
 
@@ -7,15 +9,18 @@ public class PlayerScript : MonoBehaviour {
     public int lives;
     public int soupType = 0;
     private float invonable = 0;
+    private int schoor=0;
 
     private bool lava = false;
     private bool alphegetti = false;
     private bool noddle = false;
+    public Text crackerAmount;
 
     [SerializeField]
     private stat helth;
 
-   // private Health hell;
+
+    // private Health hell;
 
     private void Awake()
     {
@@ -66,16 +71,26 @@ public class PlayerScript : MonoBehaviour {
            // hell.Valyou += 10;
             helth.CurentHelth += 10;
         }
+        crackerAmount.text = schoor.ToString();
 
     }
 
-    void OnTriggerEnter2D(Collider2D colider)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(colider.gameObject.tag == "enemy")
+        if (col.gameObject.tag == "crackerCoin")
+        {
+            schoor += 1;
+            Debug.Log(schoor);
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.tag == "enemy")
         {
             hit();
         }
+
     }
+
 
     //cats
     public void hit()
