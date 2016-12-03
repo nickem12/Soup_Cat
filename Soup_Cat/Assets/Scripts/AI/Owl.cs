@@ -7,13 +7,19 @@ public class Owl : MonoBehaviour {
     float velocity;
     float speed;
     private double timer;
+    private double bombtimer;
     private bool facingRight = true;
     public int PATROL_DISTANCE;
+
+    public Rigidbody2D bomb;
+    public float bombSpeed;
 
     // Use this for initialization
     void Start () {
         timer = 0;
+        bombtimer = 0;
         speed = 3;
+        bombSpeed = -7;
 	}
 
     void ChangeDirection()
@@ -57,13 +63,28 @@ public class Owl : MonoBehaviour {
         }
     }
 
+    void DropBomb()
+    {
+        Rigidbody rocketClone = (Rigidbody)Instantiate(bomb, transform.position, transform.rotation);
+        rocketClone.velocity = new Vector2(0,bombSpeed );
+    }
+
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         timer += 0.5;
+        bombtimer += 0.5;
+
         if (timer > PATROL_DISTANCE)
         {
+            Debug.Log("changeDirection");
             ChangeDirection();
         }
         move();
+
+        if (bombtimer > 10)
+        {
+            bombtimer = 0;
+            DropBomb();
+        }
     }
 }
