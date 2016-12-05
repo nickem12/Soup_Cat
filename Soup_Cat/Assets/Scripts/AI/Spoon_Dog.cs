@@ -10,7 +10,8 @@ public class Spoon_Dog : MonoBehaviour {
     public short jumpCounter;
     public GameObject player;
     float distance = 0;
-    short Health = 0;
+    public short Health;
+    public short damage;
 
     float velocity;
     float speed;
@@ -26,17 +27,18 @@ public class Spoon_Dog : MonoBehaviour {
         player = GameObject.FindWithTag("Player");
         Mood = MOOD_STATE.PATROL;
         timer = 0;
-        jump = 300;
+        jump = 40;
         jumpCounter = 0;
         Health = 50;
         speed = 2;
+        Health = 20;
+        damage = 5;
 	}
 
    void OnTriggerEnter2D(Collider2D colider)
     {
         if(colider.gameObject.tag == "ground" && jumpCounter != 0)
         {
-            Debug.Log("jump reset");
             jumpCounter = 0;
         }
 

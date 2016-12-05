@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
 
@@ -83,7 +84,11 @@ public class PlayerScript : MonoBehaviour {
             Debug.Log(schoor);
             Destroy(col.gameObject);
         }
-
+        if(col.gameObject.tag == "Flag")
+        {
+            Debug.Log("Yes");
+            SceneManager.LoadScene("Win");
+        }
         if (col.gameObject.tag == "enemy")
         {
             hit();

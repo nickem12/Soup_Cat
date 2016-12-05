@@ -8,6 +8,7 @@ public class soupDrop : MonoBehaviour {
     private GameObject player;
 
     private int counter = 20;
+    public short damage;
 
     enum soupType { normal, lava, alphegetti, noddle};
 
@@ -17,7 +18,8 @@ public class soupDrop : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         dir = -player.transform.localScale.x;
-        type = (soupType)player.GetComponent<PlayerScript>().soupType; 
+        type = (soupType)player.GetComponent<PlayerScript>().soupType;
+        damage = 10; 
     }
 	// Update is called once per frame
 	void Update ()

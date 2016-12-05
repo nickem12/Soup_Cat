@@ -76,7 +76,6 @@ public class Owl : MonoBehaviour {
 
         if (timer > PATROL_DISTANCE)
         {
-            Debug.Log("changeDirection");
             ChangeDirection();
         }
         move();

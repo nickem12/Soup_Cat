@@ -7,6 +7,8 @@ public class Nawhal : MonoBehaviour {
     float velocity;
     GameObject player;
     float YMax;
+    public short Health;
+    public short damage;
 
 	// Use this for initialization
 	void Start ()
@@ -14,6 +16,8 @@ public class Nawhal : MonoBehaviour {
         player = GameObject.FindWithTag("Player");
         YMax = transform.position.y + 4;
         velocity = 10;
+        Health = 200;
+        damage = 20;
 	}
 	
 	// Update is called once per frame
